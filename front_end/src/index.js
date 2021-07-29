@@ -2,13 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Main from "./container/Main";
-import MapContainer from "./component/MapContainer";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <Main />
-    <MapContainer />
   </React.StrictMode>,
   document.getElementById("root")
 );
