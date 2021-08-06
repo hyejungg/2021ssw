@@ -1,4 +1,6 @@
+com/springboot/domain/posts/Notice.java
+ com.springboot.domain.posts.Notice
+com/springboot/domain/posts/Admin.java
+ com.springboot.domain.posts.Admin
 com/springboot/Application.java
  com.springboot.Application
-com/springboot/web/HelloController.java
- com.springboot.web.HelloController

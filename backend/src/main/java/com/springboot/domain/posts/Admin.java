@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter(AccessLevel.PROTECTED)
@@ -18,9 +20,19 @@ public class Admin {
     private Long aid;
 
     @Column(length = 256, nullable = false)
-    private String id;
+    private String email;
 
-    @Column(name = "admin_pw")
+    @Column(name = "admin_pw", length = 256, nullable = false)
     private int pw;
 
+    @OneToMany(mappedBy = "admin")
+    private List<Notice> notices = new ArrayList<>();
+
+    public List<Notice> getNotices() {
+        return notices;
+    }
+
+    public void setNotices(List<Notice> notices) {
+        this.notices = notices;
+    }
 }
