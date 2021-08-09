@@ -26,7 +26,7 @@ export class Main extends Component {
       backgroundColor: "#81bef7",
       left: "73%",
       position: "absolute",
-      marginTop: "60px",
+      marginTop: "50px",
     };
     return (
       <div className="main">
@@ -38,14 +38,19 @@ export class Main extends Component {
             <h1>안심 화장실 지도</h1>
           </div>
         </div>
-        <div className="context">
+        <div  
+          style={{
+          width: "100%",
+          height: "31em",
+          }}>
           {/* 지도가 올라갈 자리 */}
           <MapContainer />
         </div>
-        <div
+        <div 
           style={{
             width: "70%",
             height: "110px",
+            float:'left'
           }}
           className="Info"
         >

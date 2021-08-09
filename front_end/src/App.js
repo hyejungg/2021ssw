@@ -5,6 +5,7 @@ import Main from "./container/Main";
 import notice from "./component/nav_item/notice";
 import admin from "./component/nav_item/admin";
 
+
 function App() {
   return (
     <div className="App">
@@ -12,7 +13,7 @@ function App() {
       <Route exact path="/" component={Main} />
       <Route path="/notice" component={notice} />
       <Route path="/admin" component={admin} />
-    </div>
+     </div>
   );
 }
 

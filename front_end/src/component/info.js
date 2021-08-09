@@ -6,14 +6,16 @@ class Info extends Component{
         const style={
             loc : {
                 // color:"#00f",
-                marginTop:'10px',
+                marginTop:'20px',
                 marginBottom:'10px',
                 marginLeft:'20px',
+                textAlign : 'left'
             },
             addr : {
                 color:"#000",
                 marginBottom:'10px',
-                marginLeft:'20px'
+                marginLeft:'20px',
+                textAlign : 'left'
             },
             cont : {
                 verticalAlign: "false"
