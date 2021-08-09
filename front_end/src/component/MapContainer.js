@@ -55,6 +55,7 @@ const MapContainer = () => {
 
       
 
+      //클릭 시 info 정보가 여기에 뜨도록
       kakao.maps.event.addListener(marker, 'click', function() {
         console.log(position.loc_name);
         console.log(position.address);
