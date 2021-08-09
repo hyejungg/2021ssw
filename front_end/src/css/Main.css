@@ -5,12 +5,9 @@
 .main {
   /* footer 지정을 위해 height, margin 지정 */
   height: 100%;
-  /* padding-left: 1em;
-  padding-right: 1em; */
 }
 
 .header {
-  /* padding-top: 3em; */
   padding-left: 1em;
   padding-right: 1em;
   background-color: #81bef7;
