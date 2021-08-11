@@ -5,6 +5,8 @@ import "../../css/Main.css";
 import "../../css/Notice.css";
 import { DataGrid } from "@material-ui/data-grid";
 import Button from '@material-ui/core/Button';
+// import Modal from "./noticeLogin";
+import Modal from "./noticeLogin";
 
 const columns = [
   { field: "id", headerName: "No", width: 100 },
@@ -53,6 +55,16 @@ const rows = [
 ];
 
 export class Notice extends Component {
+  state = {
+    modalOpen: false,
+  };
+  openModal = () => {
+    this.setState({ modalOpen: true });
+    // console.log("ddd");
+  };
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
   render() {
     return (
       <div className="main">
@@ -78,9 +90,17 @@ export class Notice extends Component {
             />
           </div>
         </div>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={this.openModal}>
           작성하기
         </Button>
+        <Modal
+            open={this.state.modalOpen}
+            close={this.closeModal}
+            title="팝업창"
+          >
+            <main> {this.props.children} </main>
+          </Modal>
+        
         <div className="footer">
           <Footer />
         </div>

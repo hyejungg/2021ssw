@@ -24,6 +24,7 @@ export class Main extends Component {
       width: "400px",
       border: "1px solid #81bef7",
       backgroundColor: "#81bef7",
+      color: "#fff",
       left: "73%",
       position: "absolute",
       marginTop: "50px",
