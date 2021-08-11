@@ -1,8 +1,53 @@
-// import { InfoSharp } from "@material-ui/icons";
-import React, { Component, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
+import data from '../data.json'
+import imgRed from "./info_item/redbutton.png";
+import imgYel from "./info_item/yellowbutton.png";
+import imgBlue from "./info_item/bluebutton.png";
+import imgWhite from "./info_item/white.PNG";
+
 const { kakao } = window;
 
+//마커 정보 꾸미는 스타일
+const style={
+  loc : {
+      // color:"#00f",
+      marginTop:'20px',
+      marginBottom:'10px',
+      marginLeft:'20px',
+      textAlign : 'left'
+  },
+  addr : {
+      color:"#000",
+      marginBottom:'10px',
+      marginLeft:'20px',
+      textAlign : 'left'
+  },
+  cont : {
+      verticalAlign: "false"
+  },
+  resultColor : {
+      marginLeft:'20px',
+      float:"left"
+  },
+  resultText : {
+      float:"left",
+      marginTop : "5px",
+      marginBottom:'10px',
+      marginLeft:'20px'
+      
+  }
+}
+
+
 const MapContainer = () => {
+
+  //마커 정보 출력할 state선언
+  const [state,setState] = useState([])
+  const [name, setName] = useState([])
+  const [add, setAdd] = useState([])
+  const [result, setResult] = useState([])
+  
+
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
@@ -12,73 +57,45 @@ const MapContainer = () => {
 
     //지도 생성
     const map = new kakao.maps.Map(container, options);
-    // const ps = new kakao.maps.services.Places(map);
   
-
-    // 마커 정보
-    var positions = [
-      {
-        loc_name: "성신여대입구역",
-        address:"성북구 동소문로 지하 102",
-        latlng: new kakao.maps.LatLng(37.592915, 127.016576), //무조건 소수점 6자리 이상 넘어가지 않기 넘으면 안나옴
-        result: "하"
-      },
-      {
-        loc_name: "커피나무",
-        address:"서울특별시 성북구 동선동 보문로30길 79",
-        latlng: new kakao.maps.LatLng(37.591063, 127.019717), 
-        result: "하"
-      },
-      {
-        loc_name: "카페 온 더 플랜",
-        address:"서울특별시 성북구 동선동 동소문로22길 39-4",
-        latlng: new kakao.maps.LatLng(37.591422, 127.018468),
-        result: "중"
-      },
-    ]
-    // selectedMarker = null; 
-
-    // var resultDiv;
-
+    //데이터 가져와 마커 생성
+    let positions = data.positions
+    setState(positions)
+    var latlng = [];
     for (var i = 0, len = positions.length; i < len; i++) {
       addMarker(positions[i]);
-      
     }
   
 
-    // 마커를 생성하고 지도 위에 표시하고, 마커에 click 이벤트를 등록하는 함수입니다
+    // 마커를 지도 위에 표시 
     function addMarker(position) {  
       var marker = new kakao.maps.Marker({
           map: map,
-          position: position.latlng
+          position: new kakao.maps.LatLng(position.latitude, position.longtitude)
       });
 
       
-
-      //클릭 시 info 정보가 여기에 뜨도록
+      //클릭시 마커 정보를 state에 전달
       kakao.maps.event.addListener(marker, 'click', function() {
-        console.log(position.loc_name);
-        console.log(position.address);
-        console.log(position.result);
-
-        // var message = '클릭한 위치는 ' + position.loc_name + ' 입니다 ';
-        // resultDiv = document.getElementById('result'); 
-        // console.log(resultDiv);
-        // resultDiv.innerHTML = message;
+        setName(position.loc_name);
+        setAdd(position.address);
+        setResult(position.result);
       });
-
     }
-
-
-
-
   }, []);
 
- 
-
+  
+ //위험도에 따른 색상
+ function color(result){ 
+   if(result === '상') return imgBlue
+   else if(result === '중') return imgYel
+   else if(result === '하') return imgRed
+   else return imgWhite
+ }
   
 
   return (
+    <div>
     <div
       id="myMap"
       style={{
@@ -86,9 +103,19 @@ const MapContainer = () => {
         height: "31em",
       }}>
     </div>
+      <div
+         style={{
+          width: "70%",
+          height: "110px",
+          float:'left'
+        }}>
+        <h2 style={style.loc}>{name}</h2>
+        <h4 style={style.addr}>{add}</h4>  
+        <img src={color(result)} style={style.resultColor}/>
+        <h4 style={style.resultText}>{result}</h4>
+      </div>
+    </div>
   );
 };
 
 export default MapContainer;
-
-

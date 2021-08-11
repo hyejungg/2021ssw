@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import Footer from "../component/footer";
 import NavSideBar from "../component/nav";
 import MapContainer from "../component/MapContainer";
-import Info from "../component/info";
+// import Info from "../component/info";
 import Modal from "../component/Modal";
 import "../css/Main.css";
 
@@ -18,7 +18,7 @@ export class Main extends Component {
     this.setState({ modalOpen: false });
   };
   render() {
-    const bstyle = {
+    const bstyle = {//후기 작성 버튼 스타일
       float: "left",
       height: "50px",
       width: "400px",
@@ -38,22 +38,16 @@ export class Main extends Component {
             <h1>안심 화장실 지도</h1>
           </div>
         </div>
-        <div  
-          style={{
-          width: "100%",
-          height: "31em",
-          }}>
+        <div>
           {/* 지도가 올라갈 자리 */}
           <MapContainer />
         </div>
-        <div 
-          style={{
-            width: "70%",
-            height: "110px",
-            float:'left'
-          }}
-          className="Info"
-        >
+        <div
+         style={{
+          width: "30%",
+          height: "110px",
+          float:'right'
+        }}>
           {/* 마커 클릭시 정보창 */}
           <button style={bstyle} onClick={this.openModal}>
             <h3>후기&nbsp;작성하기</h3>
@@ -65,7 +59,6 @@ export class Main extends Component {
           >
             <main> {this.props.children} </main>
           </Modal>
-          <Info />
         </div>
         <div className="footer">
           <Footer />
