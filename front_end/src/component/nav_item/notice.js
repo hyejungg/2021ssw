@@ -4,6 +4,7 @@ import NavSideBar from "../nav";
 import "../../css/Main.css";
 import "../../css/Notice.css";
 import { DataGrid } from "@material-ui/data-grid";
+import Button from '@material-ui/core/Button';
 
 const columns = [
   { field: "id", headerName: "No", width: 100 },
@@ -77,6 +78,9 @@ export class Notice extends Component {
             />
           </div>
         </div>
+        <Button variant="contained" color="primary">
+          작성하기
+        </Button>
         <div className="footer">
           <Footer />
         </div>

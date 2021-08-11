@@ -1,0 +1,25 @@
+{
+"positions" : [
+    {
+      "loc_name": "성신여대입구역",
+      "address":"성북구 동소문로 지하 102",
+      "latitude": 37.592915,
+      "longtitude": 127.016576,
+      "result": "하"
+    },
+    {
+      "loc_name": "커피나무",
+      "address":"서울특별시 성북구 동선동 보문로30길 79",
+      "latitude": 37.591063,
+      "longtitude":127.019717,
+      "result": "상"
+    },
+    {
+      "loc_name": "카페 온 더 플랜",
+      "address":"서울특별시 성북구 동선동 동소문로22길 39-4",
+      "latitude": 37.591422,
+      "longtitude": 127.018468,
+      "result": "중"
+    }
+  ]
+}
