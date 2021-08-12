@@ -21,12 +21,12 @@ public class PostsSaveRequestDto {
         this.admin = admin;
     }
 
-    public Notice toEntity() {
-        return Notice.builder()
-                .title(title)
-                .content(content)
-                .admin(admin)
-                .build();
-    }
+//    public Notice toEntity() {
+//        return Notice.builder()
+//                .title(title)
+//                .content(content)
+//                .admin(admin)
+//                .build();
+//    }
 
 }

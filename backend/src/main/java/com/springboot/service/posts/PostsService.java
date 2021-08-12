@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class PostsService {
-    private final PostsRepository postsRepository;
+//    private final PostsRepository postsRepository;
 
-    @Transactional
-    public Long save(PostsSaveRequestDto requestDto) {
-        return postsRepository.save(requestDto.toEntity()).getNid();
-    }
+//    @Transactional
+//    public Long save(PostsSaveRequestDto requestDto) {
+//        return postsRepository.save(requestDto.toEntity()).getNid();
+//    }
 
 //    @Transactional
 //    public Long update(Long id, PostsUpdateRequestDto requestDto) {

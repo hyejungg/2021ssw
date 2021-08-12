@@ -12,10 +12,10 @@ public class PostsResponseDto {
     private String content;
     private Admin admin;
 
-    public PostsResponseDto(Notice entity) {
-        this.nid = entity.getNid();
-        this.title = entity.getTitle();
-        this.content = entity.getContent();
-        this.admin = entity.getAdmin();
-    }
+//    public PostsResponseDto(Notice entity) {
+//        this.nid = entity.getNid();
+//        this.title = entity.getTitle();
+//        this.content = entity.getContent();
+//        this.admin = entity.getAdmin();
+//    }
 }
