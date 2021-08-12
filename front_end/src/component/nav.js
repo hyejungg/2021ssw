@@ -1,4 +1,6 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Drawer from "@material-ui/core/Drawer";
@@ -38,12 +40,23 @@ class NavSideBar extends React.Component {
             <MenuIcon />
           </IconButton>
         </AppBar>
+        {/* 각 화장실 페이지 */}
         <Drawer open={this.state.toggle}>
           <MenuItem onClick={this.handleDrawerToggle}>
-            안심 화장실 지도
+            <Link underline="none" component={RouterLink} to="/">
+              안심 화장실 지도
+            </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleDrawerToggle}>공지사항</MenuItem>
-          <MenuItem onClick={this.handleDrawerToggle}>관리자 페이지</MenuItem>
+          <MenuItem onClick={this.handleDrawerToggle}>
+            <Link underline="none" component={RouterLink} to="/notice">
+              공지사항
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={this.handleDrawerToggle}>
+            <Link underline="none" component={RouterLink} to="/admin">
+              관리자 페이지
+            </Link>
+          </MenuItem>
         </Drawer>
       </div>
     );
