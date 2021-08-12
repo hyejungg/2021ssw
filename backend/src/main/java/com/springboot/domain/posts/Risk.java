@@ -15,13 +15,13 @@ public class Risk {
     private Long rid;
 
     @Column
-    private int camera;
+    private boolean camera;
 
     @Column
-    private int safe_check;
+    private boolean safe_check;
 
     @Column
-    private int public_toilet;
+    private boolean public_toilet;
 
     @Column
     private int score;

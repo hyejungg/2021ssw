@@ -22,9 +22,9 @@ public class Notice {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY) //연관관계 주인
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) //연관관계 주인
     @JoinColumn(name = "aid")
-    private Admin admin;
+    public Admin admin;
 
     @Builder //Setter 대신 사용
     public Notice(String title, String content, Admin admin) {
