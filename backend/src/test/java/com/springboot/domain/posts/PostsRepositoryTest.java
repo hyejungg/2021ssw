@@ -47,24 +47,24 @@ public class PostsRepositoryTest {
         assertThat(posts.getContent()).isEqualTo(content);
     }
 
-//    @Test
-//    public void BaseTimeEntity_등록() {
-//        //given
-//        LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
-//        postsRepository.save(Notice.builder()
-//                .title("title")
-//                .content("content")
-//                .admin(null)
-//                .build());
-//        //when
-//        List<Notice> postsList = postsRepository.findAll();
-//
-//        //then
-//        Notice posts = postsList.get(0);
-//
-//        System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
-//
-//        assertThat(posts.getCreatedDate()).isAfter(now);
-//        assertThat(posts.getModifiedDate()).isAfter(now);
-//    }
+    @Test
+    public void BaseTimeEntity_등록() {
+        //given
+        LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
+        postsRepository.save(Notice.builder()
+                .title("title")
+                .content("content")
+                .admin(null)
+                .build());
+        //when
+        List<Notice> postsList = postsRepository.findAll();
+
+        //then
+        Notice posts = postsList.get(0);
+
+        System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
+
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
+    }
 }
