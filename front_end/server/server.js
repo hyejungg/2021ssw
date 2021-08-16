@@ -26,16 +26,12 @@ app.get('/', (req, res) =>{
 
 app.post("/idplz", (req,res)=>{
     const test = req.body.test;
-    // console.log(req.body);
     connection.query("INSERT INTO test (name) value (?)",[test],
-    // connection.query("select * from test",
     function(err,rows,fields){
         if(err){
             console.log("실패");
-            // console.log(err);
         }else{
             console.log("성공");
-            // console.log(rows);
         };
     });
 });
@@ -47,23 +43,26 @@ app.post("/callbody", (req,res)=>{
             console.log("불러오기 실패");
         }else{
             console.log("불러오기 성공");
-            console.log(rows[0]);
-            res.send(rows[0]);
+            console.log(rows[10]);
+            res.send(rows[10]);
         }
     })
 })
 
-// app.post("/data", (req, res) => {
-//     connection.query("SELECT * FROM test", function (err, rows, fields) {
-//       if (err) {
-//         console.log("데이터 가져오기 실패");
-//       } else {
-//         console.log("데이터 가져오기 성공");
-//         console.log(rows[0]);
-//         res.send(rows[0]);
-//       }
-//     });
-//   });
+//update
+app.post("/callbody", (req,res)=>{
+    connection.query("SELECT * FROM test",
+    function(err,rows,fields){
+        if(err){
+            console.log("불러오기 실패");
+        }else{
+            console.log("불러오기 성공");
+            console.log(rows[10]);
+            res.send(rows[10]);
+        }
+    })
+})
+
 
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
