@@ -52,6 +52,11 @@ class NavSideBar extends React.Component {
               공지사항
             </Link>
           </MenuItem>
+          {/* <MenuItem onClick={this.handleDrawerToggle}>
+            <Link underline="none" component={RouterLink} to="/filter">
+              필터링
+            </Link>
+          </MenuItem> */}
           <MenuItem onClick={this.handleDrawerToggle}>
             <Link underline="none" component={RouterLink} to="/admin">
               관리자 페이지
