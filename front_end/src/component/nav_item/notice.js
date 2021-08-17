@@ -36,22 +36,22 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, title: "Snow", admin: "Jon" },
-  { id: 2, title: "Lannister", admin: "Cersei" },
-  { id: 3, title: "Lannister", admin: "Jaime" },
-  { id: 4, title: "Stark", admin: "Arya" },
-  { id: 5, title: "Targaryen", admin: "Daenerys" },
-  { id: 6, title: "Melisandre", admin: null },
-  { id: 7, title: "Clifford", admin: "Ferrara" },
-  { id: 8, title: "Frances", admin: "Rossini" },
-  { id: 9, title: "Frances", admin: "Rossini" },
-  { id: 10, title: "Roxie", admin: "Harvey" },
-  { id: 11, title: "Roxie", admin: "Harvey" },
-  { id: 12, title: "Roxie", admin: "Harvey" },
-  { id: 13, title: "Roxie", admin: "Harvey" },
-  { id: 14, title: "Roxie", admin: "Harvey" },
-  { id: 15, title: "Roxie", admin: "Harvey" },
-  { id: 16, title: "Roxie", admin: "Harvey" },
+  { id: 1, title: "안심 화장실 지도가 오픈했어요!", admin: "서현" },
+  { id: 2, title: "안심 화장실 지도 이용가이드 안내", admin: "혜정" },
+  { id: 3, title: "마커 기능 사용법", admin: "지연" },
+  { id: 4, title: "다녀온 장소의 생생한 후기를 남겨보세요", admin: "서현" },
+  // { id: 5, title: "Targaryen", admin: "Daenerys" },
+  // { id: 6, title: "Melisandre", admin: null },
+  // { id: 7, title: "Clifford", admin: "Ferrara" },
+  // { id: 8, title: "Frances", admin: "Rossini" },
+  // { id: 9, title: "Frances", admin: "Rossini" },
+  // { id: 10, title: "Roxie", admin: "Harvey" },
+  // { id: 11, title: "Roxie", admin: "Harvey" },
+  // { id: 12, title: "Roxie", admin: "Harvey" },
+  // { id: 13, title: "Roxie", admin: "Harvey" },
+  // { id: 14, title: "Roxie", admin: "Harvey" },
+  // { id: 15, title: "Roxie", admin: "Harvey" },
+  // { id: 16, title: "Roxie", admin: "Harvey" },
 ];
 
 export class Notice extends Component {

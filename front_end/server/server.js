@@ -16,52 +16,60 @@ connection.connect();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
-
 //rep는 앞에서 보낸 객체를 받아 body가 앞에서 보낸 데이터
 //res는 express에서 데이터를 보낼때에 사용
-app.get('/', (req, res) =>{ 
-    res.send('는 코딩 중!')
-})
 
 
-app.post("/idplz", (req,res)=>{
-    const test = req.body.test;
-    connection.query("INSERT INTO test (name) value (?)",[test],
+
+app.get('/toilet_info', (req, res) =>{ 
+    connection.query("SELECT * FROM toilet_info",
+    function(err,rows){
+        if(err){
+            console.log("불러오기 실패");
+        }else{
+        
+            console.log("!!불러오기 성공");
+            console.log(JSON.stringify(rows));
+            // console.log(JSON.stringify(rows).length);
+            res.send(JSON.stringify(rows));
+        }
+    })
+});
+
+
+app.post("/risk", (req, res)=>{
+    const camera = req.body.camera;
+    const safe_check = req.body.safe_check;
+    const public_toilet = req.body.public_toilet;
+    const name = req.body.name;
+    const pw = req.body.pw;
+    const context = req.body.context;
+
+    connection.query("INSERT INTO risk (camera, safe_check, public_toilet, name, pw, context) value (?, ?, ?, ?, ?, ?)", 
+    [camera], [safe_check], [public_toilet], [name], [pw], [context],
     function(err,rows,fields){
         if(err){
             console.log("실패");
         }else{
-            console.log("성공");
+            console.log("성공")
+            console.log(rows);
+            res.send((rows));
         };
     });
 });
 
-app.post("/callbody", (req,res)=>{
-    connection.query("SELECT * FROM test",
-    function(err,rows,fields){
-        if(err){
-            console.log("불러오기 실패");
-        }else{
-            console.log("불러오기 성공");
-            console.log(rows[10]);
-            res.send(rows[10]);
-        }
-    })
-})
+// app.post("/idplz", (req,res)=>{
+//     const test = req.body.test;
+//     connection.query("INSERT INTO test (name) value (?)",[test],
+//     function(err,rows,fields){
+//         if(err){
+//             console.log("실패");
+//         }else{
+//             console.log("성공");
+//         };
+//     });
+// });
 
-//update
-app.post("/callbody", (req,res)=>{
-    connection.query("SELECT * FROM test",
-    function(err,rows,fields){
-        if(err){
-            console.log("불러오기 실패");
-        }else{
-            console.log("불러오기 성공");
-            console.log(rows[10]);
-            res.send(rows[10]);
-        }
-    })
-})
 
 
 app.listen(port, ()=>{
