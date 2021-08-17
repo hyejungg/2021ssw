@@ -8,7 +8,7 @@ const Footer = () => (
     marginBottom:'10px',
 
   }}>
-    <p>© 팀명~~ Copyright 2022, All rights reserved.</p>
+    <p>©GABOJAGO Copyright 2021, All rights reserved.</p>
   </div>
 );
 
