@@ -1,10 +1,10 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import Footer from "../component/footer";
 import NavSideBar from "../component/nav";
 import MapContainer from "../component/MapContainer";
-// import Info from "../component/info";
 import Modal from "../component/Modal";
 import "../css/Main.css";
+import "../css/Modal.css";
 
 export class Main extends Component {
   state = {
@@ -18,7 +18,8 @@ export class Main extends Component {
     this.setState({ modalOpen: false });
   };
   render() {
-    const bstyle = {//후기 작성 버튼 스타일
+    const bstyle = {
+      //후기 작성 버튼 스타일
       float: "left",
       height: "50px",
       width: "400px",
@@ -44,11 +45,12 @@ export class Main extends Component {
           <MapContainer />
         </div>
         <div
-         style={{
-          width: "30%",
-          height: "110px",
-          float:'right'
-        }}>
+          style={{
+            width: "30%",
+            height: "110px",
+            float: "right",
+          }}
+        >
           {/* 마커 클릭시 정보창 */}
           <button style={bstyle} onClick={this.openModal}>
             <h3>후기&nbsp;작성하기</h3>

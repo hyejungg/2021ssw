@@ -110,7 +110,6 @@ const MapContainer = () => {
       });
     }
   }, [toilet_data]);
-
   //위험도에 따른 색상
   function color(result) {
     if (result === 3) return imgBlue;
