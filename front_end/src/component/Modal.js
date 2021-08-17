@@ -1,8 +1,7 @@
 import React from "react";
-import "../css/Modal.css";
+// import "../css/Modal.css";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -115,12 +114,7 @@ const Modal = (props) => {
             <button className="send" onClick={close}>
               {" "}
               등록{" "}
-            </button>{" "}
-            {/* close버튼은 지우기 위에 X버튼 있으니까 */}
-            {/* <button className="close" onClick={close}>
-              {" "}
-              close{" "}
-            </button> */}
+            </button>
           </footer>
         </section>
       ) : null}
