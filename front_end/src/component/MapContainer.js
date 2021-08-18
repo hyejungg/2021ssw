@@ -60,17 +60,6 @@ const MapContainer = () => {
       }
     };
     callDataApi();
-
-    /**
-     * 다른 버전
-     */
-    // fetch("http://localhost:3001/toilet_info")
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     const resData = json;
-    //     setToilet(resData);
-    //     console.log(toilet_data);
-    //   });
   }, []); //2번째 인자 []는 무한호출 방지
 
   useEffect(() => {

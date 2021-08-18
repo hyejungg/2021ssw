@@ -19,6 +19,7 @@ app.use(cors());
 //rep는 앞에서 보낸 객체를 받아 body가 앞에서 보낸 데이터
 //res는 express에서 데이터를 보낼때에 사용
 
+//화장실 정보 조회
 app.get("/toilet_info", (req, res) => {
   connection.query("SELECT * FROM toilet_info", function (err, rows) {
     if (err) {
@@ -32,6 +33,7 @@ app.get("/toilet_info", (req, res) => {
   });
 });
 
+//후기작성하기에서 위험도 insert
 app.post("/risk", (req, res) => {
   const camera = req.body.camera;
   const safe_check = req.body.safe_check;
@@ -60,13 +62,55 @@ app.post("/risk", (req, res) => {
   );
 });
 
-//관리자 로그인 @TODO : 미완성
+//공지사항 update
+app.put("/admin", (req, res) => {
+  const title = req.body.email;
+  const context = req.body.email;
+  const aid = Number(req.body.email);
+  const parmas = [title, context, aid];
+
+  connection.query(
+    "UPDATE notice SET title = ?, context = ? WHERE aid = ?",
+    [parmas],
+    function (err, rows) {
+      if (err) {
+        console.log("공지사항 수정 실패");
+        res.send("failed");
+      } else {
+        console.log("공지사항 수정 성공");
+        res.send("success");
+      }
+    }
+  );
+});
+
+//공지사항 delete
+app.delete("/admin", (req, res) => {
+  const nid = Number(req.body.nid);
+
+  connection.query(
+    "DELETE FROM notice WHERE nid = ?",
+    [nid],
+    function (err, rows) {
+      if (err) {
+        console.log("공지사항 삭제 실패");
+        res.send("failed");
+      } else {
+        console.log("공지사항 삭제 성공");
+        res.send("success");
+      }
+    }
+  );
+});
+
+//관리자 로그인
 app.post("/admin/login", (req, res) => {
   const email = req.body.email;
-  // const email = "qwer";
+  const pw = req.body.email;
+  const parmas = [email, pw];
   connection.query(
-    "SELECT email, pw FROM admin WHERE email = ?",
-    [email],
+    "SELECT email, pw FROM admin WHERE email = ? AND pw = ?",
+    [parmas],
     function (err, rows) {
       if (err) {
         console.log("로그인 실패");
@@ -78,18 +122,6 @@ app.post("/admin/login", (req, res) => {
     }
   );
 });
-
-// app.post("/idplz", (req,res)=>{
-//     const test = req.body.test;
-//     connection.query("INSERT INTO test (name) value (?)",[test],
-//     function(err,rows,fields){
-//         if(err){
-//             console.log("실패");
-//         }else{
-//             console.log("성공");
-//         };
-//     });
-// });
 
 app.listen(port, () => {
   console.log(`Connect at http://localhost:${port}`);
