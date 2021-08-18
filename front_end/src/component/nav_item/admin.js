@@ -4,7 +4,7 @@ import NavSideBar from "../nav";
 import "../../css/Main.css";
 import "../../css/Notice.css";
 import { DataGrid } from "@material-ui/data-grid";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const columns = [
   { field: "id", headerName: "no", width: 70 },
@@ -47,10 +47,70 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, loc:"성신여대", camera: 'x', safe:'o', public:'x', title: "너무 깨끗해요 주기적으로 검사도 합니다.", admin: "jiueon" },
-  { id: 2, loc:"밥풀", camera: 'x', safe:'x', public:'o', title: "청결하지 않아요", admin: "ad4408" },
-  { id: 3, loc:"구월", camera: 'x', safe:'o', public:'x', title: "매우 깨끗해요 또 가고싶어요", admin: "hy" },
-  { id: 4, loc:"설빙", camera: 'x', safe:'o', public:'x', title: "사용할만 해요", admin: "sewn" },
+  {
+    id: 1,
+    loc: "성신여대",
+    camera: "x",
+    safe: "o",
+    public: "x",
+    title: "너무 깨끗해요 주기적으로 검사도 합니다.",
+    admin: "jiueon",
+  },
+  {
+    id: 2,
+    loc: "밥풀",
+    camera: "x",
+    safe: "x",
+    public: "o",
+    title: "청결하지 않아요",
+    admin: "ad4408",
+  },
+  {
+    id: 3,
+    loc: "구월",
+    camera: "x",
+    safe: "o",
+    public: "x",
+    title: "매우 깨끗해요 또 가고싶어요",
+    admin: "hy",
+  },
+  {
+    id: 4,
+    loc: "설빙",
+    camera: "x",
+    safe: "o",
+    public: "x",
+    title: "사용할만 해요",
+    admin: "sewn",
+  },
+  ,
+  {
+    id: 5,
+    loc: "탐앤탐스",
+    camera: "x",
+    safe: "x",
+    public: "x",
+    title: "청결하지 않고, 불친절해요.",
+    admin: "ad4408",
+  },
+  {
+    id: 6,
+    loc: "롯데리아",
+    camera: "x",
+    safe: "o",
+    public: "x",
+    title: "종종 이용합니다. 괜찮아요",
+    admin: "hy",
+  },
+  {
+    id: 7,
+    loc: "역전 할머니 맥주",
+    camera: "x",
+    safe: "x",
+    public: "x",
+    title: "화장실 문이 조금 불편해요ㅠ",
+    admin: "sewn",
+  },
 ];
 
 export class Admin extends Component {
@@ -72,7 +132,7 @@ export class Admin extends Component {
         </div>
         <div className="header">
           <div id="title">
-            <h1>관리자 페이지</h1>
+            <h1>후기 관리 페이지</h1>
           </div>
         </div>
 
