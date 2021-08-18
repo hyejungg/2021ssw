@@ -8,7 +8,7 @@ const mysql = require("mysql"); // mysql 모듈 사용
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root", //mysql의 id
-  password: "", //mysql의 password
+  password: "123456", //mysql의 password
   database: "clean_db", //사용할 데이터베이스
 });
 connection.connect();
@@ -62,8 +62,30 @@ app.post("/risk", (req, res) => {
   );
 });
 
+//공지사항 insert
+app.put("/adminInsert", (req, res) => {
+  const aid = Number(req.body.email);
+  const title = req.body.email;
+  const context = req.body.email;
+  const parmas = [aid,title, context];
+
+  connection.query(
+    "INSERT INTO notice (aid, title, context) value (?, ?, ?)",
+    [parmas],
+    function (err, rows) {
+      if (err) {
+        console.log("공지사항 수정 실패");
+        res.send("failed");
+      } else {
+        console.log("공지사항 수정 성공");
+        res.send("success");
+      }
+    }
+  );
+});
+
 //공지사항 update
-app.put("/admin", (req, res) => {
+app.put("/adminUpdate", (req, res) => {
   const title = req.body.email;
   const context = req.body.email;
   const aid = Number(req.body.email);
@@ -85,7 +107,7 @@ app.put("/admin", (req, res) => {
 });
 
 //공지사항 delete
-app.delete("/admin", (req, res) => {
+app.delete("/adminDelete", (req, res) => {
   const nid = Number(req.body.nid);
 
   connection.query(

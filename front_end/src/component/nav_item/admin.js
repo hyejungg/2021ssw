@@ -145,8 +145,8 @@ export class Admin extends Component {
               columns={columns}
               pageSize={7}
               //선택 가능하도록 할거면 밑에 옵션 풀어주면 됨
-              //   checkboxSelection
-              //   disableSelectionOnClick
+                // checkboxSelection
+                // disableSelectionOnClick
             />
           </div>
         </div>

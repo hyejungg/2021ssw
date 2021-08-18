@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import data from "./admin.json";
+import Modal2 from "./noticeWrite"
 
 // let admin = data.admin;
 // let email, pw;
@@ -19,10 +20,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const state = {
+//   modalOpen: false,
+// };
+// const openModal = () => {
+//   this.setState({ modalOpen: true });
+//   // console.log("ddd");
+// };
+// const closeModal = () => {
+//   this.setState({ modalOpen: false });
+// };
+
 const Modal = (props) => {
   const classes = useStyles();
   //   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
+
+  const [modalState, setModalState] = useState({
+    display: false,
+    deleteItemId: undefined
+  });
 
   //모달 내 입력 폼 관련 변수 정의
   const [email, setEmail] = useState("");
@@ -119,10 +136,27 @@ const Modal = (props) => {
             </form>
           </main>
           <footer>
-            <button className="send" onClick={confirmDisplay}>
+            <button className="send" 
+            // onClick={() => setModalState({ display: true, deleteItemId: props.id })}
+            onClick={confirmDisplay}
+              // {this.openModal}
+            
+            >
+               {/* modalState.display ? <div onClick={() => 
+                [deleteList(modalState.deleteItemId), 
+                setModalState({display: false, deleteItemId: undefined}) ]
+                }>
+                  Confirm
+                  </div> : null */}
               {" "}
               로그인{" "}
             </button>{" "}
+            {/* <Modal2
+            open={this.state.modalOpen}
+            close={this.closeModal}
+            title="팝업창">
+            <main> {this.props.children} </main>
+          </Modal2> */}
           </footer>
         </section>
       ) : null}
