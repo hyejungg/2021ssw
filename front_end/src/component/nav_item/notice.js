@@ -5,7 +5,7 @@ import "../../css/Main.css";
 import "../../css/Notice.css";
 import { DataGrid } from "@material-ui/data-grid";
 import Button from '@material-ui/core/Button';
-import Modal from "./noticeLogin";
+import Modal from "./noticeWrite";
 
 const columns = [
   { field: "id", headerName: "No", width: 100 },
@@ -38,7 +38,7 @@ const rows = [
   { id: 1, title: "안심 화장실 지도가 오픈했어요!", admin: "서현" },
   { id: 2, title: "안심 화장실 지도 이용가이드 안내", admin: "혜정" },
   { id: 3, title: "마커 기능 사용법", admin: "지연" },
-  { id: 4, title: "다녀온 장소의 생생한 후기를 남겨보세요", admin: "서현" },
+  { id: 4, title: "다녀온 장소의 생생한 후기를 남겨보세요", admin: "test" },
 ];
 
 
