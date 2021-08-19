@@ -3,12 +3,12 @@ const app = express();
 const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
 const cors = require("cors");
 // const bodyParser = require("body-parser");
-const mysql = require("mysql"); // mysql 모듈 사용
+const mysql = require("mysql2"); // mysql 모듈 사용
 
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root", //mysql의 id
-  password: "123456", //mysql의 password
+  password: "", //mysql의 password
   database: "clean_db", //사용할 데이터베이스
 });
 connection.connect();
@@ -64,17 +64,19 @@ app.post("/risk", (req, res) => {
 
 //공지사항 select
 app.get("/noticeSelect", (req, res) => {
-  connection.query("SELECT nid,title,email FROM notice , admin where notice.aid = admin .aid;", 
-  function (err, rows) {
-    if (err) {
-      console.log("불러오기 실패");
-    } else {
-      console.log("!!불러오기 성공");
-      console.log(rows);
-      // console.log(JSON.stringify(rows).length);
-      res.send(rows);
+  connection.query(
+    "SELECT nid,title,email FROM notice , admin where notice.aid = admin .aid;",
+    function (err, rows) {
+      if (err) {
+        console.log("불러오기 실패");
+      } else {
+        console.log("!!불러오기 성공");
+        console.log(rows);
+        // console.log(JSON.stringify(rows).length);
+        res.send(rows);
+      }
     }
-  });
+  );
 });
 
 //공지사항 insert
@@ -82,7 +84,7 @@ app.put("/noticeInsert", (req, res) => {
   const aid = Number(req.body.email);
   const title = req.body.email;
   const context = req.body.email;
-  const parmas = [aid,title, context];
+  const parmas = [aid, title, context];
 
   connection.query(
     "INSERT INTO notice (aid, title, context) value (?, ?, ?)",
