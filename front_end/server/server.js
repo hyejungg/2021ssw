@@ -62,8 +62,23 @@ app.post("/risk", (req, res) => {
   );
 });
 
+//공지사항 select
+app.get("/noticeSelect", (req, res) => {
+  connection.query("SELECT nid,title,email FROM notice , admin where notice.aid = admin .aid;", 
+  function (err, rows) {
+    if (err) {
+      console.log("불러오기 실패");
+    } else {
+      console.log("!!불러오기 성공");
+      console.log(rows);
+      // console.log(JSON.stringify(rows).length);
+      res.send(rows);
+    }
+  });
+});
+
 //공지사항 insert
-app.put("/adminInsert", (req, res) => {
+app.put("/noticeInsert", (req, res) => {
   const aid = Number(req.body.email);
   const title = req.body.email;
   const context = req.body.email;
@@ -74,10 +89,10 @@ app.put("/adminInsert", (req, res) => {
     [parmas],
     function (err, rows) {
       if (err) {
-        console.log("공지사항 수정 실패");
+        console.log("공지사항 작성 실패");
         res.send("failed");
       } else {
-        console.log("공지사항 수정 성공");
+        console.log("공지사항 작성 성공");
         res.send("success");
       }
     }
@@ -85,7 +100,7 @@ app.put("/adminInsert", (req, res) => {
 });
 
 //공지사항 update
-app.put("/adminUpdate", (req, res) => {
+app.put("/noticeUpdate", (req, res) => {
   const title = req.body.email;
   const context = req.body.email;
   const aid = Number(req.body.email);
@@ -107,7 +122,7 @@ app.put("/adminUpdate", (req, res) => {
 });
 
 //공지사항 delete
-app.delete("/adminDelete", (req, res) => {
+app.delete("/noticeDelete", (req, res) => {
   const nid = Number(req.body.nid);
 
   connection.query(
@@ -131,15 +146,15 @@ app.post("/admin/login", (req, res) => {
   const pw = req.body.email;
   const parmas = [email, pw];
   connection.query(
-    "SELECT email, pw FROM admin WHERE email = ? AND pw = ?",
+    "SELECT email, pw FROM admin",
     [parmas],
     function (err, rows) {
       if (err) {
         console.log("로그인 실패");
       } else {
         console.log("로그인 성공");
-        const reqData = rows;
-        res.send(reqData);
+        console.log(JSON.stringify(rows));
+        res.send(JSON.stringify(rows));
       }
     }
   );

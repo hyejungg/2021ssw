@@ -1,11 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component} from "react";
 import Footer from "../footer";
 import NavSideBar from "../nav";
 import "../../css/Main.css";
 import "../../css/Notice.css";
 import { DataGrid } from "@material-ui/data-grid";
 import Button from '@material-ui/core/Button';
-import Modal from "./noticeWrite";
+import Modal from "./noticeLogin";
 
 const columns = [
   { field: "id", headerName: "No", width: 100 },
@@ -21,18 +21,25 @@ const columns = [
     width: 160,
     editable: true,
   },
-  //   {
-  //     field: "fullName",
-  //     headerName: "Full name",
-  //     description: "This column has a value getter and is not sortable.",
-  //     sortable: false,
-  //     width: 160,
-  //     valueGetter: (params) =>
-  //       `${params.getValue(params.id, "firstName") || ""} ${
-  //         params.getValue(params.id, "lastName") || ""
-  //       }`,
-  //   },
+  
 ];
+
+function callNotice(){
+  fetch("http://localhost:3001/noticeSelect",{
+    method:"get",
+    headers : {
+      "content-type" : "application/json",
+    },
+    body : JSON.stringify(),
+  })
+  .then((res)=>res.json())
+  .then((json)=>{
+    this.setState({
+      data : json.testbody,
+    });
+    console.log(json);
+  });
+}
 
 const rows = [
   { id: 1, title: "안심 화장실 지도가 오픈했어요!", admin: "서현" },
@@ -41,12 +48,25 @@ const rows = [
   { id: 4, title: "다녀온 장소의 생생한 후기를 남겨보세요", admin: "test" },
 ];
 
+// var nid, title, email, content;
+// for (var i = 0; i < data.length; i++) {
+//   rows[i] = data[i].nid, data[i].title, data[i].email
+// }
+
 
 export class Notice extends Component {
- 
   state = {
+    testbody : " ",
+    data : " ",
     modalOpen: false,
   };
+
+  handleChange =(e)=>{
+    this.setState({
+      [e.target.title] : e.target.value,
+    });
+  }
+
   openModal = () => {
     this.setState({ modalOpen: true });
     // console.log("ddd");
@@ -54,18 +74,22 @@ export class Notice extends Component {
   closeModal = () => {
     this.setState({ modalOpen: false });
   };
+
   render() {
     return (
       <div className="main">
+        
         <div className="nav">
           <NavSideBar />
         </div>
         <div className="header">
           <div id="title">
+          {callNotice()}
             <h1>공지사항</h1>
           </div>
         </div>
         <div className="context">
+          
           {/* 공지사항 표가 보여질 자리 */}
           <div style={{ height: 500, width: "100%" }}>
             <DataGrid

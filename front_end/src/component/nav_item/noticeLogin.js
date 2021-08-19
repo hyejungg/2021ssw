@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/noticeLogin.css";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import data from "./admin.json";
 import Modal2 from "./noticeWrite"
+import axios from "axios";
 
+// let data, email, pw;
 // let admin = data.admin;
-// let email, pw;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -20,20 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const state = {
-//   modalOpen: false,
-// };
-// const openModal = () => {
-//   this.setState({ modalOpen: true });
-//   // console.log("ddd");
-// };
-// const closeModal = () => {
-//   this.setState({ modalOpen: false });
-// };
 
 const Modal = (props) => {
   const classes = useStyles();
-  //   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
+  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
 
   const [modalState, setModalState] = useState({
@@ -44,6 +35,7 @@ const Modal = (props) => {
   //모달 내 입력 폼 관련 변수 정의
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+  const [admin, setLogin] = useState([]);
 
   //모달 내 입력 폼 값 변경 시 초기화
   const handleChange = (event) => {
@@ -51,19 +43,33 @@ const Modal = (props) => {
     setPw(event.target.value);
     console.log(email + " / " + pw);
   };
+  const [url, setUrl] = useState(`http://localhost:3001/admin/login`);
 
-  // function login(email, pw) {
-  //   for (var i = 0; i < admin.length; i++) {
-  //     if (email === admin[i].email && pw === admin[i].password) {
-  //       console.log("로그인 성공");
-  //       window.confirm("로그인 정보가 일치합니다.");
-  //     }
-  //   }
-  //   console.log(email);
-  //   window.confirm(email);
-  // }
+  useEffect(() => {
+    /**
+     * 비동기 통신 코드
+     */
+    const callDataApi = async () => {
+      try {
+        const resData = await axios.get(url);
+        setLogin(resData.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    callDataApi();
+  }, []);
 
-  //       window.confirm(e.target.email)
+  function login(email, pw) {
+    for (var i = 0; i < admin.length; i++) {
+      if (email === admin[i].email && pw === admin[i].password) {
+        console.log("로그인 성공");
+        window.confirm("로그인 정보가 일치합니다.");
+      }
+    }
+    console.log(email);
+    window.confirm(email);
+  }
 
   const useConfirm = (message = null, onConfirm) => {
     // if (!onConfirm || typeof onConfirm !== "function") {
@@ -85,15 +91,11 @@ const Modal = (props) => {
   const isSuccess = () => console.log("로그인 성공.");
   const isFail = () => console.log("로그인 실패.");
 
-  // const confirmDisplay = useConfirm(
-  //   "로그인을 성공했습니다!",
-  //   isSuccess,
-  //   isFail
-  // );
-
-  const confirmDisplay = () => {
-    alert("로그인 성공했습니다!");
-  };
+  const confirmDisplay = useConfirm(
+    "로그인을 실패했습니다!",
+    isSuccess,
+    isFail
+  );
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -136,27 +138,10 @@ const Modal = (props) => {
             </form>
           </main>
           <footer>
-            <button className="send" 
-            // onClick={() => setModalState({ display: true, deleteItemId: props.id })}
-            onClick={confirmDisplay}
-              // {this.openModal}
-            
-            >
-               {/* modalState.display ? <div onClick={() => 
-                [deleteList(modalState.deleteItemId), 
-                setModalState({display: false, deleteItemId: undefined}) ]
-                }>
-                  Confirm
-                  </div> : null */}
+            <button className="send" onClick={confirmDisplay}>    
               {" "}
               로그인{" "}
             </button>{" "}
-            {/* <Modal2
-            open={this.state.modalOpen}
-            close={this.closeModal}
-            title="팝업창">
-            <main> {this.props.children} </main>
-          </Modal2> */}
           </footer>
         </section>
       ) : null}

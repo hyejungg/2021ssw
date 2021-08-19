@@ -76,27 +76,6 @@ body {
     border-top: 1px solid #dee2e6;
   }
   
-  /* .modal > section > main > .name {
-    position: absolute;
-    width: 265px;
-    height: 64px;
-    left: 135px;
-    top: 175px;
-  
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 15px;
-    or 60%
-  
-    display: flex;
-    align-items: center;
-    text-align: center;
-  
-    border: 1px solid #c9c9c9;
-    box-sizing: border-box;
-  } */
   .modal > section > footer {
     padding: 12px 16px;
     text-align: right;

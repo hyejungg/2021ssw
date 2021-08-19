@@ -70,11 +70,6 @@ const useStyles = makeStyles((theme) => ({
                 {" "}
                 등록{" "}
               </button>{" "}
-              {/* close버튼은 지우기 위에 X버튼 있으니까 */}
-              {/* <button className="close" onClick={close}>
-                {" "}
-                close{" "}
-              </button> */}
             </footer>
           </section>
         ) : null}

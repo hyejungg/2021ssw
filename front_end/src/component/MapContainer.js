@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import imgRed from "./info_item/redbutton.png";
 import imgYel from "./info_item/yellowbutton.png";
 import imgBlue from "./info_item/bluebutton.png";
-import imgWhite from "./info_item/white.PNG";
+
 
 import axios from "axios";
 
@@ -99,6 +99,7 @@ const MapContainer = () => {
       });
     }
   }, [toilet_data]);
+  
   //위험도에 따른 색상
   function color(result) {
     if (result === 3) return imgBlue;
@@ -107,6 +108,7 @@ const MapContainer = () => {
     else return;
   }
 
+  //위험도 표시
   function resultText(result) {
     if (result === 3) return "상";
     else if (result === 2) return "중";
