@@ -16,9 +16,9 @@
 3. react-router-dom을 이용하여 router를 이용한 화면 간 이동
 4. 메인 화면에서 후기 작성하기 버튼 클릭 시 보여지는 모달창 구현
 5. 공지사항 화면 구현
-  - 공지사항에서 Material ui를 이용하여 표로 구현
+   - 공지사항에서 Material ui를 이용하여 표로 구현
 #### 웹 백엔드
 1. node.js express를 이용하여 server 구현
 2. 메인 화면에서 마커 정보 데이터 비동기 통신 구현
-  - (client) async - awiat 를 이용하여 비동기로 통신하여 마커 정보를 가져오도록 구현
-  - (server) mysql 모듈 설치 후 connection하여 화장실 테이블의 모든 정보를 전달
+   - (client) async - awiat 를 이용하여 비동기로 통신하여 마커 정보를 가져오도록 구현
+   - (server) mysql 모듈 설치 후 connection하여 화장실 테이블의 모든 정보를 전달
